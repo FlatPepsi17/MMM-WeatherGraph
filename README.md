@@ -5,29 +5,42 @@ This an extension for [MagicMirror](https://github.com/MichMich/MagicMirror) tha
 This module started as a fork of 'MMM-forecast.io' by dmcinnes (https://github.com/dmcinnes/MMM-forecast-io), adding many new features and moving to a new data source since DarkSky discontinued API access. (Thanks Apple- so nice of you.)
 
 Features:
+
 -Current weather, including temp and wind
+
 -Sunrise / sunset time
+
 -7 day forecase with visual for temp ranges
+
 -2 day precipation graph, with temp, wind, humidity, and cloudcover
+
 -Lots of options to turn on/off any parts you want
+
 -Impetial/metric and 12/24 hour time options
 
 Installation:
+
 -Get an API key from OpenWeatherMap.org.  https://openweathermap.org/darksky-openweather
+
 -If you're using a MagicMirror, you need to lookup your GPS coordinates.  One way is to find your location is to open maps.google.com, and right-click on your location.
+
 -This module uses white icons by default.  If you prefer color coded icons, merge the contents of the "Color-icons.md" file into your "css\custom.css" file. 
 
 Example screen shots:
 Rain is the filled blue graph, snow is the filled white graph
+
 ![screenshot4](screenshot4.png)
 
 Turn off features to make a simple display.
+
 ![screenshot1](screenshot1.png)
 
 Want to see everything? Here's temp, wind, humidity, and cloud cover. Legend in the bottom right corner.
+
 ![screenshot2](screenshot2.png)
 
 Metric is supported, and the precipation graph can be adjusted. THis one shows 24 hours.
+
 ![screenshot3](screenshot3.png)
 
 ## Using the module
