@@ -1,0 +1,75 @@
+.MMM-WeatherGraph {
+}
+
+.MMM-WeatherGraph .big-icon {
+  font-size: 75%;
+  line-height: 65px;
+  display: inline-block;
+  -ms-transform: translate(0, -3px); /* IE 9 */
+  -webkit-transform: translate(0, -3px); /* Safari */
+  transform: translate(0, -3px);
+}
+
+.MMM-WeatherGraph .summary {
+  width: 400px;
+}
+
+.MMM-WeatherGraph .forecast {
+  text-align: left;
+  min-width: 400px;
+  margin-top: 1ex;
+}
+
+.MMM-WeatherGraph .forecast-row {
+}
+
+.MMM-WeatherGraph .forecast-row>span {
+  display: table-cell;
+  width: 1px;
+}
+
+.MMM-WeatherGraph .forecast-row .forecast-day {
+  text-align: left;
+  padding-right: 0.2em;
+}
+.MMM-WeatherGraph .forecast-row .weathericon {
+  text-align: center;
+  padding-right: 0.5em;
+}
+
+.MMM-WeatherGraph .forecast-bar {
+  display: table;
+  overflow: hidden;
+}
+
+.MMM-WeatherGraph .forecast-bar>span {
+  display: table-cell;
+  text-align: center;
+}
+
+.MMM-WeatherGraph .forecast-bar .bar {
+  background-color: #aaa;
+  line-height: 0.8em;
+  border-radius: 1em;
+  border: 0.5ex black solid;
+  background-clip: padding-box;
+  color: black;
+}
+
+.MMM-WeatherGraph .precipitation-graph {
+  border: 1px solid #aaa;
+  margin-top: 1ex;
+}
+
+.small.MMM-WeatherGraph .forecast {
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.small.MMM-WeatherGraph .summary {
+  width: 300px;
+}
+
+.small.MMM-WeatherGraph .precipitation-graph {
+  width: 300px;
+}
