@@ -18,7 +18,7 @@ Features:
 
 -Impetial/metric and 12/24 hour time options
 
-#Installation:
+## Installation:
 
 -Get an API key from OpenWeatherMap.org.  https://openweathermap.org/darksky-openweather
 
