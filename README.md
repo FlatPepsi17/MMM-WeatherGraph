@@ -23,10 +23,13 @@ Features:
 -Get an API key from OpenWeatherMap.org.  https://openweathermap.org/darksky-openweather
 
 -Open a terminal window on your device
+
 -Navigate to your MagicMirror's modules folder. If you are using the default installation directory, use the command:
+
 cd ~/MagicMirror/modules
 
 -Copy the module to your computer by executing the following command:
+
 git clone https://github.com/FlatPepsi17/MMM-WeatherGraph
 
 -If you're using a MagicMirror, you need to lookup your GPS coordinates.  One way is to find your location is to open maps.google.com, and right-click on your location.  Use these coordinates in the config file to ensure you get weather for your location.
