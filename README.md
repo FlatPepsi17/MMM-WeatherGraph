@@ -55,7 +55,7 @@ Metric is supported, and the precipation graph can be adjusted. THis one shows 2
 
 Daily precipition totals in the week's list is now an option. Rain or snow totals for that day are shown. Can be turned on or off.
 
-![screenshot3](screenshot4.png)
+![screenshot4](screenshot4.png)
 
 
 ## Using the module
