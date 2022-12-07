@@ -53,6 +53,11 @@ Metric is supported, and the precipation graph can be adjusted. THis one shows 2
 
 ![screenshot3](screenshot3.png)
 
+Daily precipition totals in the week's list is now an option. Rain or snow totals for that day are shown. Can be turned on or off.
+
+![screenshot3](screenshot4.png)
+
+
 ## Using the module
 
 To use this module, add it to the modules array in the `config/config.js` file. Minimal setup:
@@ -83,6 +88,7 @@ modules: [
       apiKey: 'abcde12345abcde12345abcde12345ab',
 
       showForecast: true,            // 7 day forecast list
+      showForecastPrecip: true,      // show precip totals in 7 day list
       showGraph: true,               // enable all graphing of weather 
       precipitationGraphWidth: 400,  // width in pixels. Default=400
       precipitationGraphHeight: 150, // height in pixels. 0=auto-scales
