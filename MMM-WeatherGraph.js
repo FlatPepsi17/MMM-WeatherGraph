@@ -19,6 +19,7 @@ Module.register("MMM-WeatherGraph", {
     longitude: null,
     showSummary: true,
     showForecast: true,
+    showForecastPrecip: true,
     showGraph: true,
     graphHourRange: 48,
     showGraphTemp: true,
@@ -167,11 +168,11 @@ Module.register("MMM-WeatherGraph", {
     var minutely       = this.weatherData.minutely;
     var daily          = this.weatherData.daily;
 
-    var timeFomat = "h:mm a";
-    if (this.config.time24Hr) {
-      timeFomat = "h:mm a";
+    var timeFormat = "h:mm a";
+    if (this.config.time24hr) {
+      timeFormat = "HH:mm";
     } else {
-      timeFomat = "HH:mm";
+      timeFormat = "h:mm a";
     }
 
 //========== Current large icon & Temp
@@ -216,16 +217,16 @@ Module.register("MMM-WeatherGraph", {
       var now      = new Date();
 
       if (today.sunrise*1000 < now && today.sunset*1000 > now) {
-      	var sunset = new moment.unix(today.sunset).format( timeFomat );
+      	var sunset = new moment.unix(today.sunset).format( timeFormat );
         sunString1 = '<span class="wi wi-sunset xdimmed"></span> '  + sunset;
 
-    	var sunrise = new moment.unix(tomorrow.sunrise).format( timeFomat );
+    	var sunrise = new moment.unix(tomorrow.sunrise).format( timeFormat );
         sunString2 = '<span class="wi wi-sunrise xdimmed"></span> ' + sunrise;
       } else {
-    	var sunrise = new moment.unix(today.sunrise).format( timeFomat );
+    	var sunrise = new moment.unix(today.sunrise).format( timeFormat );
         sunString1 = '<span class="wi wi-sunrise xdimmed"></span> ' + sunrise;
 
-      	var sunset = new moment.unix(tomorrow.sunset).format( timeFomat );
+      	var sunset = new moment.unix(tomorrow.sunset).format( timeFormat );
         sunString2 = '<span class="wi wi-sunset xdimmed"></span> '  + sunset;
       }
 
@@ -238,8 +239,36 @@ Module.register("MMM-WeatherGraph", {
 
 // =========  summary text
     if (this.config.showSummary) {
-      var summaryText = this.weatherData.current.weather[0].description;
       var summary = document.createElement("div");
+      var summarySnow = "";
+      var summaryRain = "";
+      var summaryText = "";
+      var precipAmt = 0;
+
+      if (this.config.showForecastPrecip) {
+        if (this.config.units == 'metric') {       // Metric (mm/cm)
+          if (this.weatherData.daily[0].rain ) {
+            precipAmt = this.weatherData.daily[0].rain;
+            summaryRain = ', ' + precipAmt.toFixed(1) + 'mm rain';
+          }
+          if (this.weatherData.daily[0].snow ) {
+            precipAmt = this.weatherData.daily[0].snow / 10;
+            summarySnow = ', ' + precipAmt.toFixed(1) + 'cm snow';
+          }
+        } else {                                // Imperial (inches)
+          if (this.weatherData.daily[0].rain ) {
+            precipAmt = this.weatherData.daily[0].rain / 25.4;
+            summaryRain = ', ' + precipAmt.toFixed(1) + '" rain';
+          }
+          if (this.weatherData.daily[0].snow ) {
+            precipAmt = this.weatherData.daily[0].snow / 2.54;
+            summarySnow = ', ' + precipAmt.toFixed(1) + '" snow';
+          }
+        }
+      }
+
+      summaryText = this.weatherData.current.weather[0].description + summaryRain + summarySnow;
+
       summary.className = "small dimmed summary";
       summary.innerHTML = summaryText;
       wrapper.appendChild(summary);
@@ -677,8 +706,8 @@ Module.register("MMM-WeatherGraph", {
     var dayTextSpan = document.createElement("span");
     dayTextSpan.className = "forecast-day"
     dayTextSpan.innerHTML = this.getDayFromTime(data.dt);
-    var iconClass = this.config.iconTable[data.weather[0].main];
 
+    var iconClass = this.config.iconTable[data.weather[0].main];
     var icon = document.createElement("span");
     icon.className = 'wi weathericon ' + iconClass;
 
@@ -703,6 +732,41 @@ Module.register("MMM-WeatherGraph", {
     leftSpacer.style.width = (interval * (rowMinTemp - min)) + "%";
     var rightSpacer = document.createElement("span");
     rightSpacer.style.width = (interval * (max - rowMaxTemp)) + "%";
+
+
+
+    var dayPrecip = document.createElement("span");
+    dayPrecip.className = "forecast-day";
+    var precipAmt = 0;
+
+    if (this.config.showForecastPrecip) {
+      if (this.config.units == 'metric') {       // Metric (mm/cm)
+        if (data.snow) {
+          precipAmt = data.snow / 10;
+          dayPrecip.innerHTML = precipAmt.toFixed(1) + 'cm';
+        } else {
+          if (data.rain) {
+            precipAmt = data.rain;
+            dayPrecip.innerHTML = precipAmt.toFixed(1) + 'mm';
+          } else {
+            dayPrecip.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+          }
+        }
+      } else {                                 // Imperial (inches)
+        if (data.snow) {
+          precipAmt = data.snow / 2.54;
+          dayPrecip.innerHTML = precipAmt.toFixed(1) + '"';
+        } else {
+          if (data.rain) {
+            precipAmt = data.rain / 25.4;
+            dayPrecip.innerHTML = precipAmt.toFixed(1) + '"';
+          } else {
+            dayPrecip.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+          }
+        }
+      }
+    }
+    forecastBar.appendChild( dayPrecip );
 
     forecastBar.appendChild(leftSpacer);
     forecastBar.appendChild(minTemp);
