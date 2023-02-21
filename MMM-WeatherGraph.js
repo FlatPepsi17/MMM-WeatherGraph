@@ -261,7 +261,7 @@ Module.register("MMM-WeatherGraph", {
             summaryRain = ', ' + precipAmt.toFixed(1) + '" rain';
           }
           if (this.weatherData.daily[0].snow ) {
-            precipAmt = this.weatherData.daily[0].snow / 2.54;
+            precipAmt = this.weatherData.daily[0].snow / 25.4;
             summarySnow = ', ' + precipAmt.toFixed(1) + '" snow';
           }
         }
@@ -754,7 +754,7 @@ Module.register("MMM-WeatherGraph", {
         }
       } else {                                 // Imperial (inches)
         if (data.snow) {
-          precipAmt = data.snow / 2.54;
+          precipAmt = data.snow / 25.4;
           dayPrecip.innerHTML = precipAmt.toFixed(1) + '"';
         } else {
           if (data.rain) {
