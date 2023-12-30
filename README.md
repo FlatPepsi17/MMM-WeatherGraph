@@ -89,20 +89,26 @@ modules: [
 
       showForecast: true,            // 7 day forecast list
       showForecastPrecip: true,      // show precip totals in 7 day list
-      showGraph: true,               // enable all graphing of weather 
+      showGraph: true,               // enable all graphing of weather
+      graphLegendFont: '10px Arial', // Default '10px Arial' set the pixel size and font name
       precipitationGraphWidth: 400,  // width in pixels. Default=400
       precipitationGraphHeight: 150, // height in pixels. 0=auto-scales
       graphHourRange: 48,            // how many hours in the graph? Max 48
-      showWind: true,                // current wind speed at top
+      showWind: true,                // current wind speed and icon at top
+      showTemp: true,                // current temp and icon at top
       showGraphPrecip: true,         // on graph, show rain and snowfall
       showGraphTemp: true,           // on graph, show temp
       graphTempColor: 'white',       // on graph, color of temp line
+      graphTempFont: '10px Arial',   // Default '10px Arial' set the pixel size and font. You can set it to '0px Arial' if you don't want numbers
       showGraphWind: true,           // on graph, show wind
       graphWindColor: 'grey',        // on graph, color of temp line
+      graphWindFont: '10px Arial',   // Default '10px Arial' set the pixel size and font. You can set it to '0px Arial' if you don't want numbers
       showGraphHumid: true,          // on graph, show humidity
       humidWindColor: '#88CC88',     // on graph, color of humid line
+      graphHumidFont: '10px Arial',  // Default '10px Arial' set the pixel size and font. You can set it to '0px Arial' if you don't want numbers
       showGraphCloud: true,          // on graph, show cloud cover %
       graphCloudColor: '#dedb49',    // on graph, color of cloud line
+      graphCloudFont: '10px Arial',  // Default '10px Arial' set the pixel size and font. You can set it to '0px Arial' if you don't want numbers
       showSunrise: true,             // next sunrise or sunset at top
       showSummary: true,             // text of next hour's conditions
       showHotColdLines: true,        // blue line at freezing, red line at 80 F
@@ -223,6 +229,12 @@ modules: [
       </td>
     </tr>
     <tr>
+      <td><code>showTemp</code></td>
+      <td>Toggles display of current temperature.<br>
+        <br><b>Default value:</b>  <code>true</code>
+      </td>
+    </tr>
+    <tr>
       <td><code>showSunrise</code></td>
       <td>Toggles display of next sunrise or sunset time.<br>
         <br><b>Default value:</b>  <code>true</code>
@@ -234,5 +246,35 @@ modules: [
         <br><b>Default value:</b>  <code>true</code>
       </td>
     </tr>
+    <tr>
+      <td><code>graphLegendFont</code></td>
+      <td>Set the pixel size and font name of the graph legend<br>
+        <br><b>Default value:</b>  <code>10px Arial</code>
+      </td>
+    </tr>
+    <tr>
+      <td><code>graphTempFont</code></td>
+      <td>Set the pixel size and font name of the graph temperature. You can set it to '0px Arial' if you want just a line.<br>
+        <br><b>Default value:</b>  <code>10px Arial</code>
+      </td>
+    </tr>	
+    <tr>
+      <td><code>graphWindFont</code></td>
+      <td>Set the pixel size and font name of the graph wind. You can set it to '0px Arial' if you want just a line.<br>
+        <br><b>Default value:</b>  <code>10px Arial</code>
+      </td>
+    </tr>	
+    <tr>
+      <td><code>graphHumidFont</code></td>
+      <td>Set the pixel size and font name of the graph humidity. You can set it to '0px Arial' if you want just a line.<br>
+        <br><b>Default value:</b>  <code>10px Arial</code>
+      </td>
+    </tr>	
+    <tr>
+      <td><code>graphCloudFont</code></td>
+      <td>Set the pixel size and font name of the graph cloud coverage. You can set it to '0px Arial' if you want just a line.<br>
+        <br><b>Default value:</b>  <code>10px Arial</code>
+      </td>
+    </tr>    
   </tbody>
 </table>
