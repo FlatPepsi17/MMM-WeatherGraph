@@ -22,19 +22,25 @@ Module.register("MMM-WeatherGraph", {
     showForecastPrecip: true,
     showGraph: true,
     graphHourRange: 48,
+    graphLegendFont: '10px Arial',
     showGraphTemp: true,
     graphTempColor: 'white',
+    graphTempFont: '10px Arial',
     showGraphWind: true,
     graphWindColor: 'grey',
+    graphWindFont: '10px Arial',
     showGraphHumid: false,
     graphHumidColor: '#88CC88',
+    graphHumidFont: '10px Arial',
     showGraphCloud: false,
     graphCloudColor: '#dedb49',
+    graphCloudFont: '10px Arial',
     showGraphLegend: true,
     precipitationGraphWidth: 400,
     precipitationGraphHeight: 0,
     showHotColdLines: true,
     showWind: true,
+    showTemp: true,
     showSunrise: true,
     unitTable: {
       'default':  'imperial',
@@ -181,14 +187,16 @@ Module.register("MMM-WeatherGraph", {
 
     var iconClass = this.config.iconTable[this.weatherData.current.weather[0].main];
 
-    var icon = document.createElement("span");
-    icon.className = 'big-icon wi ' + iconClass;
-    large.appendChild(icon);
+    if (this.config.showTemp) {
+      var icon = document.createElement("span");
+      icon.className = 'big-icon wi ' + iconClass;
+      large.appendChild(icon);
 
-    var temperature = document.createElement("span");
-    temperature.className = "bright";
-    temperature.innerHTML = " " + this.temp + "&deg;";
-    large.appendChild(temperature);
+      var temperature = document.createElement("span");
+      temperature.className = "bright";
+      temperature.innerHTML = " " + this.temp + "&deg;";
+      large.appendChild(temperature);
+    }  
 
 // ====== wind now
     if (this.config.showWind) {
@@ -490,7 +498,7 @@ Module.register("MMM-WeatherGraph", {
           tempTemp = Math.round( this.weatherData.hourly[i].temp );
 
           context.beginPath();
-          context.font = "10px Arial";
+          context.font = this.config.graphTempFont;
           context.fillStyle = this.config.graphTempColor;
           context.fillText( tempTemp, tempX, tempY );
           context.stroke();
@@ -541,7 +549,7 @@ Module.register("MMM-WeatherGraph", {
           tempWind = Math.round( this.weatherData.hourly[i].wind_speed );
 
           context.beginPath();
-          context.font = "10px Arial";
+          context.font = this.config.graphWindFont;
           context.fillStyle = this.config.graphWindColor;
           context.fillText( tempWind, tempX, tempY );
           context.stroke();
@@ -589,7 +597,7 @@ Module.register("MMM-WeatherGraph", {
           tempHumid = Math.round( this.weatherData.hourly[i].humidity );
 
           context.beginPath();
-          context.font = "10px Arial";
+          context.font = this.config.graphHumidFont;
           context.fillStyle = this.config.graphHumidColor;
           context.fillText( tempHumid, tempX, tempY );
           context.stroke();
@@ -637,7 +645,7 @@ Module.register("MMM-WeatherGraph", {
           tempCloud = Math.round( this.weatherData.hourly[i].clouds );
 
           context.beginPath();
-          context.font = "10px Arial";
+          context.font = this.config.graphCloudFont;
           context.fillStyle = this.config.graphCloudColor;
           context.fillText( tempCloud, tempX, tempY );
           context.stroke();
@@ -650,7 +658,7 @@ Module.register("MMM-WeatherGraph", {
 // ====== line legends 
     if (this.config.showGraphLegend) {
       context.beginPath();
-      context.font = "10px Arial";
+      context.font = this.config.graphLegendFont;
       var labelHeight = 5;
       if (this.config.showGraphCloud) {
         context.fillStyle = this.config.graphCloudColor;
