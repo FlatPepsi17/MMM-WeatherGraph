@@ -2,7 +2,7 @@ Module.register("MMM-WeatherGraph", {
 
   defaults: {
     apiKey: "",
-    apiBase: "http://api.openweathermap.org/data/2.5/onecall?",
+    apiBase: "http://api.openweathermap.org/data/3.0/onecall?",
     units: config.units,
     language: config.language,
     time24hr: false,
