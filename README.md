@@ -4,6 +4,8 @@ This an extension for [MagicMirror](https://github.com/MichMich/MagicMirror) tha
 
 This module started as a fork of 'MMM-forecast.io' by dmcinnes (https://github.com/dmcinnes/MMM-forecast-io), adding many new features and moving to a new data source since DarkSky discontinued API access. (Thanks Apple- so nice of you.)
 
+My original goal was to know if I needed to get up early to shovel show before work- so there's an emphasis on precipitation type and timing.  There's enough features to turn on & off that you can customize it to your liking.
+
 Features:
 
 -Current weather, including temp and wind
@@ -12,7 +14,7 @@ Features:
 
 -7 day forecase with visual for temp ranges
 
--2 day precipation graph, with temp, wind, humidity, and cloudcover
+-4 day precipation graph, with temp, wind, humidity, and cloudcover
 
 -Lots of options to turn on/off any parts you want
 
@@ -34,10 +36,10 @@ git clone https://github.com/FlatPepsi17/MMM-WeatherGraph
 
 -If you're using a MagicMirror, you need to lookup your GPS coordinates.  One way is to find your location is to open maps.google.com, and right-click on your location.  Use these coordinates in the config file to ensure you get weather for your location.
 
--This module uses white icons by default.  If you prefer color coded icons, merge the contents of the "Color-icons.md" file into your "css\custom.css" file. 
+-This module uses white icons by default.  If you prefer color coded icons, merge the contents of the "Color-icons.md" file into the bottom of your "css\custom.css" file. 
 
 Example screen shots:
-Rain is the filled blue graph, snow is the filled white graph
+Rain is the filled blue graph, snow is the filled white graph. Note that the graph always has current conditions as the far left, and future forecasts as the graph continues to the right. Tick marks at the bottom show 6 hour steps in the future.
 
 ![screenshot4](screenshot4.png)
 
@@ -68,6 +70,7 @@ modules: [
     position: 'top_right',  // This can be any of the regions.
     config: {
       // get your API key at:  https://openweathermap.org/home/sign_up
+      // note that you will need to sign up for the "One Call API 3.0" plan. Set the "Calls per day" setting there to 1000 so you never get billed.
       apiKey: 'abcde12345abcde12345abcde12345ab',
 
       latitude:   37.2431,   // replace with your GPS location 
